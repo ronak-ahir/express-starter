@@ -25,7 +25,7 @@ $(function() {
     if (outputText === '02') {
       outputText = '2';
     }
-    $('#output').text('outputText');
+    $('#output').text(outputText);
   });
 
   $('#three').click(function() {
@@ -33,7 +33,7 @@ $(function() {
     if (outputText === '03') {
       outputText = '3';
     }
-    $('#output').text('outputText');
+    $('#output').text(outputText);
   });
 
   $('#four').click(function() {
@@ -41,7 +41,7 @@ $(function() {
     if (outputText === '04') {
       outputText = '4';
     }
-    $('#output').text('outputText');
+    $('#output').text(outputText);
   });
 
  $('#five').click(function() {
@@ -49,7 +49,7 @@ $(function() {
     if (outputText === '05') {
       outputText = '5';
     }
-    $('#output').text('outputText');
+    $('#output').text(outputText);
   });
 
  $('#six').click(function() {
@@ -57,7 +57,7 @@ $(function() {
     if (outputText === '06') {
       outputText = '6';
     }
-    $('#output').text('outputText');
+    $('#output').text(outputText);
   });
 
  $('#seven').click(function() {
@@ -65,7 +65,7 @@ $(function() {
     if (outputText === '07') {
       outputText = '7';
     }
-    $('#output').text('outputText');
+    $('#output').text(outputText);
   });
 
  $('#eight').click(function() {
@@ -73,7 +73,7 @@ $(function() {
     if (outputText === '08') {
       outputText = '8';
     }
-    $('#output').text('outputText');
+    $('#output').text(outputText);
   });
 
  $('#nine').click(function() {
@@ -81,7 +81,7 @@ $(function() {
     if (outputText === '09') {
       outputText = '9';
     }
-    $('#output').text('outputText');
+    $('#output').text(outputText);
   });
 
   $('#add').click(function() {
@@ -137,7 +137,7 @@ $(function() {
 
   $('#equals').click(function() {
     // FIXME
-    var res = eval(outputText);
+    var res = eval(outputNum);
     $('#output').text(res);
   });
 
