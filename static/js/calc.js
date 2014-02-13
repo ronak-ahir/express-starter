@@ -131,13 +131,13 @@ $(function() {
     var outputText = $('#output').text();
     var outputNum = parseFloat(eval(outputText));
     // FIXME
-    var newNum = Math.pow(X,X);
+    var newNum = Math.pow(X,2);
     $('#output').text(newNum);
   });
 
   $('#equals').click(function() {
     // FIXME
-    var res = eval(outputNum);
+    var res = eval($('#output').text());
     $('#output').text(res);
   });
 
