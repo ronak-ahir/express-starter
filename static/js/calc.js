@@ -131,7 +131,7 @@ $(function() {
     var outputText = $('#output').text();
     var outputNum = parseFloat(eval(outputText));
     // FIXME
-    var newNum = Math.pow(X,2);
+    var newNum = Math.pow(outputNum,2);
     $('#output').text(newNum);
   });
 
