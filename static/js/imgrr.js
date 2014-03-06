@@ -34,9 +34,8 @@ $('.clickable').click(function() {
 
 // Problem 5 (Imgrr) -------------------------------------------------
 $('.small_image').click(function() {
-	$('.small_image').val();
-	alert($(this).attr('src')) 
-	$('.large_image').attr('src', $('#small_image').val()); 
+	$('.small_image').val(); 
+	$('.large_image').attr('src', $(this).attr('src')); 
 
    	
 });
