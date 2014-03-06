@@ -39,5 +39,29 @@ $('#p5').click(function() {
     context.stroke();
   });
 
+$('#p6').click(function() {
+	context.strokeStyle = 'green';
+    context.strokeRect(75, 75, 120, 320);
+    context.stroke();
+  });
+
+$('#p7').click(function() {
+	context.fillStyle = 'red';
+    context.beginPath();
+    context.arc(200,200,50,0,2 * Math.PI); 
+    context.closePath();
+    context.fill();
+  });
+
+$('#p8').click(function() {
+	context.fillStyle = 'yellow';
+	context.strokeStyle = 'blue';
+    context.rect(50, 20, 120, 120);
+    context.stroke();
+    context.fill();
+  });
+
+
+
 
 });
