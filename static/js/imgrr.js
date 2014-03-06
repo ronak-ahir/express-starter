@@ -36,7 +36,7 @@ $('.clickable').click(function() {
 $('.small_image').click(function() {
 	$('.small_image').val();
 	alert($(this).attr('src')) 
-	$('.large_image').attr('src', $(this)); 
+	$('.large_image').attr('src', $('#small_image').val()); 
 
    	
 });
