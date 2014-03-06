@@ -61,6 +61,27 @@ $('#p8').click(function() {
     context.fill();
   });
 
+$('#p9').click(function() {	
+for (var i = 1; i<=5; i++) {
+	context.strokeRect(i * 50,100,50,50);
+}
+});
+
+$('#p10').click(function() {	
+for (var i = 0; i<=99; i++) {
+	context.strokeRect(i * 5,100,5,5); 
+}
+});
+
+$('#p11').click(function() {	
+for (var y = 0; y<=99; y++) {
+	for (var i = 0; i<=99; i++){
+		context.strokeRect(i * 5, y * 5,5,5);
+		console.log(i + ' ' + y) 
+	}
+}
+});
+
 
 
 
