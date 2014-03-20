@@ -5,16 +5,22 @@ $(document).ready(function() {
   var width = canvas.width;
   var height = canvas.height;
 
+
   //PUT STUFF HERE
-  var x = 20;
+  var circle = {
+    x: 20,
+    y: 20,
+    r: 20
+  };
 
   //run an iteration of the game
   var updateGame = function() {
-    x += 5; 
+    circle.x += 5; 
+    circle.y += 5; 
     context.fillStyle = 'blue';
     context.fillRect(0,0,800,600);
     context.beginPath();
-    context.arc(x,20,20,0,2 * Math.PI); 
+    context.arc(circle.x,circle.y,circle.r,0,2 * Math.PI); 
     context.closePath();
     context.fillStyle = 'yellow';
     context.fill();
