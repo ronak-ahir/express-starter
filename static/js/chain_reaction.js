@@ -11,19 +11,25 @@ $(document).ready(function() {
   var b0 = {
     x: 20,
     y: 20,
-    r: 20
+    r: 20,
+    vx: 5,
+    vy: 5
   };
 
   var b1 = {
-    x: 200,
+    x: 400,
     y: 200,
-    r: 40
+    r: 40,
+    vx: 5,
+    vy: 5
   };
 
   var b2 = {
     x: 150,
     y: 125,
-    r: 60
+    r: 60,
+    vx: 5, 
+    vy: 5
   };
 
   balls.push(b0);
@@ -34,8 +40,23 @@ $(document).ready(function() {
 
   // Run an interation of the game
   var updateGame = function() {
+    context.fillStyle = 'white';
+    context.fillRect(0,0,800,600);
 
-    for (var i = 0; i < balls.length; i++) {
+  for (var i = 0; i < balls.length; i++) {
+    balls[i].x += balls[i].vx; 
+    balls[i].y += balls[i].vy; 
+
+    if ((balls[i].vx > 0 && balls[i].x + balls[i].r >= canvas.width)
+      || (balls[i].vx < 0 && balls[i].x - balls[i].r <= 0)) {
+        balls[i].vx = -balls[i].vx; 
+      }
+    if ((balls[i].vy > 0 && balls[i].y + balls[i].r >= canvas.height)
+      || (balls[i].vy < 0 && balls[i].y - balls[i].r <= 0)) {
+        balls[i].vy = -balls[i].vy; 
+      }
+    }
+  for (var i = 0; i < balls.length; i++) {
       context.beginPath();
       context.arc(balls[i].x,balls[i].y,balls[i].r,0,2 * Math.PI); 
       context.closePath();
@@ -43,6 +64,9 @@ $(document).ready(function() {
       context.fill();
     }
 
+
+
+    setTimeout(updateGame,50);
 
   };
 
