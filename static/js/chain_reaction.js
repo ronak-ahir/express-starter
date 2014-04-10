@@ -6,35 +6,15 @@ $(document).ready(function() {
   var height = canvas.height;
 
   // PUT STUFF HERE
+  var numBalls = 10;
+
   var balls = [];
+  for (var i = 0; i < numBalls; i++) {
+    var b = {x: canvas.width * Math.random(), y: canvas.height * Math.random(), r: 20, vx: 25 * Math.random() , vy: 25 * Math.random()};
+    balls.push(b);
+  }
 
-  var b0 = {
-    x: 20,
-    y: 20,
-    r: 20,
-    vx: 5,
-    vy: 5
-  };
-
-  var b1 = {
-    x: 400,
-    y: 200,
-    r: 40,
-    vx: 5,
-    vy: 5
-  };
-
-  var b2 = {
-    x: 150,
-    y: 125,
-    r: 60,
-    vx: 5, 
-    vy: 5
-  };
-
-  balls.push(b0);
-  balls.push(b1);
-  balls.push(b2);
+console.log(balls)
 
  
 
@@ -55,7 +35,7 @@ $(document).ready(function() {
       || (balls[i].vy < 0 && balls[i].y - balls[i].r <= 0)) {
         balls[i].vy = -balls[i].vy; 
       }
-    }
+  }
   for (var i = 0; i < balls.length; i++) {
       context.beginPath();
       context.arc(balls[i].x,balls[i].y,balls[i].r,0,2 * Math.PI); 
@@ -66,7 +46,7 @@ $(document).ready(function() {
 
 
 
-    setTimeout(updateGame,50);
+    requestAnimationFrame(updateGame,50);
 
   };
 
