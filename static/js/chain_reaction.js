@@ -8,6 +8,10 @@ $(document).ready(function() {
   // PUT STUFF HERE
   var numBalls = 10;
 
+  var reactions = [];
+
+  var colors = ['red', 'green', 'blue']
+
   var balls = [];
   for (var i = 0; i < numBalls; i++) {
     var b = {x: canvas.width * Math.random(), y: canvas.height * Math.random(), r: 20, vx: 25 * Math.random() , vy: 25 * Math.random()};
@@ -44,6 +48,13 @@ console.log(balls);
       context.fill();
     }
 
+  for (var i = 0; i < reactions.length; i++) {
+      context.beginPath();
+      context.arc(reactions[i].x,reactions[i].y,reactions[i].r,0,2 * Math.PI); 
+      context.closePath();
+      context.fillStyle = 'blue';
+      context.fill();
+    }
 
 
     requestAnimationFrame(updateGame,50);
@@ -57,9 +68,9 @@ console.log(balls);
     var y = e.pageY - $(this).offset().top;
     // PUT STUFF HERE
    
-    var b = {x: x, y: y, r: 20, vx: 25 * Math.random() , vy: 25 * Math.random()};
-    balls.push(b);
-  
+    var c = {x: x, y: y, r: 30};
+    reactions.push(c);
+
   });
 
   updateGame();
