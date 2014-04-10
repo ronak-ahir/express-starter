@@ -14,7 +14,7 @@ $(document).ready(function() {
     balls.push(b);
   }
 
-console.log(balls)
+console.log(balls);
 
  
 
@@ -56,6 +56,10 @@ console.log(balls)
     var x = e.pageX - $(this).offset().left;
     var y = e.pageY - $(this).offset().top;
     // PUT STUFF HERE
+   
+    var b = {x: x, y: y, r: 20, vx: 25 * Math.random() , vy: 25 * Math.random()};
+    balls.push(b);
+  
   });
 
   updateGame();
