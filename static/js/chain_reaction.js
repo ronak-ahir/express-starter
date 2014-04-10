@@ -56,6 +56,11 @@ console.log(balls);
       context.fill();
     }
 
+  for (var i = 0; i < reactions.length; i++) {
+        if (reactions[i].r < 30) {
+          reactions[i].r++; 
+    } 
+  }
 
     requestAnimationFrame(updateGame,50);
 
