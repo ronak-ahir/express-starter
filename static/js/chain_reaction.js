@@ -73,7 +73,7 @@ console.log(balls);
     var y = e.pageY - $(this).offset().top;
     // PUT STUFF HERE
    
-    var c = {x: x, y: y, r: 30};
+    var c = {x: x, y: y, r: 1};
     reactions.push(c);
 
   });
