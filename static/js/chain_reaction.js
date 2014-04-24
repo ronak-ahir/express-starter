@@ -10,7 +10,7 @@ $(document).ready(function() {
 
   var reactions = [];
 
-  var colors = ['red', 'green', 'blue']
+  var colors = ['red', 'green', 'blue'];
 
   var balls = [];
   for (var i = 0; i < numBalls; i++) {
@@ -26,6 +26,17 @@ console.log(balls);
   var updateGame = function() {
     context.fillStyle = 'white';
     context.fillRect(0,0,800,600);
+
+for (var i = 0; i < balls.length; i++) {
+  for (var j = 0; j < reactions.length; j++) {
+    var xdiff = (balls[i].x - reactions[j].x);
+    var ydiff = (balls[i].y - reactions[j].y);
+    var dist = Math.sqrt(xdiff * xdiff + ydiff * ydiff);
+      if (dist < (balls[i].r + reactions[j].r)) {
+        alert('BOOM');
+      }
+        }
+}
 
   for (var i = 0; i < balls.length; i++) {
     balls[i].x += balls[i].vx; 
