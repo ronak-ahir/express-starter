@@ -38,6 +38,8 @@ for (var i = 0; i < balls.length; i++) {
       }
     }
     if (collided === true) {
+          var c = {x: balls[i].x, y: balls[i].y, r: 1};
+          reactions.push(c);
           balls.splice(i, 1);
           i--;
     }
