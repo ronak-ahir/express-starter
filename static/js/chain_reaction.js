@@ -10,6 +10,10 @@ $(document).ready(function() {
 
   var reactions = [];
 
+  var reacting = false; 
+
+  var numReacted = 0; 
+
   var balls = [];
   for (var i = 0; i < numBalls; i++) {
     var b = {x: canvas.width * Math.random(), y: canvas.height * Math.random(), r: 20, vx: 25 * Math.random() , vy: 25 * Math.random()};
@@ -24,6 +28,7 @@ console.log(balls);
   var updateGame = function() {
     context.fillStyle = 'white';
     context.fillRect(0,0,800,600);
+ 
 
 for (var i = 0; i < balls.length; i++) {
   var collided = false;
@@ -39,6 +44,7 @@ for (var i = 0; i < balls.length; i++) {
           var c = {x: balls[i].x, y: balls[i].y, r: 1, timer: 0};
           reactions.push(c);
           balls.splice(i, 1);
+          numReacted++;
           i--;
     }
   }
@@ -86,21 +92,31 @@ for (var i = 0; i < balls.length; i++) {
         }
   }
 
+  context.fillStyle = 'green';
+  context.font = '20px Arial';
+  context.fillText("Reactions:" + numReacted, 10, 20);
+
     requestAnimationFrame(updateGame,50);
+
 
   };
 
-  // Handle a canvas click event
+
+  
   $('#game_canvas').click(function(e) {
-    // Find the mouse x and y relative to the top-left corner of the canvas
+    if (reacting === false) {
+    reacting = true;
     var x = e.pageX - $(this).offset().left;
     var y = e.pageY - $(this).offset().top;
-    // PUT STUFF HERE
+    
    
     var c = {x: x, y: y, r: 1, timer: 0};
     reactions.push(c);
 
+  }
   });
+
+
 
   updateGame();
 });
