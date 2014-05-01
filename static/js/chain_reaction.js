@@ -14,11 +14,12 @@ $(document).ready(function() {
 
   var numReacted = 0; 
 
+  var gameState = "Menu";
+
+  var menuText = "Click to play!"
+
   var balls = [];
-  for (var i = 0; i < numBalls; i++) {
-    var b = {x: canvas.width * Math.random(), y: canvas.height * Math.random(), r: 20, vx: 25 * Math.random() , vy: 25 * Math.random()};
-    balls.push(b);
-  }
+  
 
 console.log(balls);
 
@@ -28,9 +29,28 @@ console.log(balls);
   var updateGame = function() {
     context.fillStyle = 'white';
     context.fillRect(0,0,800,600);
+
+  if (gameState === "Menu") {
+    context.fillStyle = 'green';
+    
+    if (menuText.length < 15) {
+      context.font = '100px Arial';
+    } else { 
+      context.font = '20px Arial';
+    }
+    context.fillText(menuText, 100, 200);
+
+  } else if (gameState === "playing") {
+    if (reacting === true && reactions.length === 0) {
+      menuText = "Game Over! You reacted " + numReacted + " balls.";
+      context.fillStyle = 'green';
+      gameState = "Menu";
+
+
+    } 
  
 
-for (var i = 0; i < balls.length; i++) {
+  for (var i = 0; i < balls.length; i++) {
   var collided = false;
   for (var j = 0; j < reactions.length; j++) { 
     var xdiff = (balls[i].x - reactions[j].x);
@@ -96,6 +116,8 @@ for (var i = 0; i < balls.length; i++) {
   context.font = '20px Arial';
   context.fillText("Reactions:" + numReacted, 10, 20);
 
+  }
+
     requestAnimationFrame(updateGame,50);
 
 
@@ -104,7 +126,17 @@ for (var i = 0; i < balls.length; i++) {
 
   
   $('#game_canvas').click(function(e) {
-    if (reacting === false) {
+    if (gameState === "Menu") {
+      gameState = "playing";
+      reacting = false;
+      numReacted = 0;
+      balls = [];
+      for (var i = 0; i < numBalls; i++) {
+      var b = {x: canvas.width * Math.random(), y: canvas.height * Math.random(), r: 20, vx: 25 * Math.random() , vy: 25 * Math.random()};
+      balls.push(b);
+  } 
+
+    } else if (reacting === false && gameState === "playing") {
     reacting = true;
     var x = e.pageX - $(this).offset().left;
     var y = e.pageY - $(this).offset().top;
