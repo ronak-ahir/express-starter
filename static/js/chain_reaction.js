@@ -10,8 +10,6 @@ $(document).ready(function() {
 
   var reactions = [];
 
-  var colors = ['red', 'green', 'blue'];
-
   var balls = [];
   for (var i = 0; i < numBalls; i++) {
     var b = {x: canvas.width * Math.random(), y: canvas.height * Math.random(), r: 20, vx: 25 * Math.random() , vy: 25 * Math.random()};
@@ -38,7 +36,7 @@ for (var i = 0; i < balls.length; i++) {
       }
     }
     if (collided === true) {
-          var c = {x: balls[i].x, y: balls[i].y, r: 1};
+          var c = {x: balls[i].x, y: balls[i].y, r: 1, timer: 0};
           reactions.push(c);
           balls.splice(i, 1);
           i--;
@@ -76,9 +74,16 @@ for (var i = 0; i < balls.length; i++) {
     }
 
   for (var i = 0; i < reactions.length; i++) {
-        if (reactions[i].r < 30) {
+        reactions[i].timer ++; 
+        if (reactions[i].timer > 200) {
+          reactions[i].r--; 
+        } else if (reactions[i].r < 30) { 
           reactions[i].r++; 
     } 
+        if (reactions[i].r === 0) {
+          reactions.splice(i, 1);
+          i--;
+        }
   }
 
     requestAnimationFrame(updateGame,50);
@@ -92,7 +97,7 @@ for (var i = 0; i < balls.length; i++) {
     var y = e.pageY - $(this).offset().top;
     // PUT STUFF HERE
    
-    var c = {x: x, y: y, r: 1};
+    var c = {x: x, y: y, r: 1, timer: 0};
     reactions.push(c);
 
   });
